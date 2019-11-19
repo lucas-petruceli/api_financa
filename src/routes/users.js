@@ -13,7 +13,9 @@ module.exports = (app) => {
         //     .then(result => res.status(200).json(result))
 
         app.services.user.getAll()
-            .then(result => res.status(200).json(result))
+            .then(result => {
+                res.status(200).json(result)
+            })
             .catch(err => next(err))
     }
 

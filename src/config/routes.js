@@ -7,16 +7,15 @@ module.exports = (app) => {
     .post(app.routes.users.create)
 
     app.route('/users')
+    // .all(app.config.passport.authenticate()) //descomentar para funcionar o teste (AUTH.TEST) (NAO DEVE ACESSAR UMA ROTA PROTEGIDA SEM O TOKEN)
     .get(app.routes.users.findAll)
     .post(app.routes.users.create)
 
     app.route('/accounts')
-    .all(app.config.passport.authenticate())
     .post(app.routes.accounts.create)
     .get(app.routes.accounts.findAll)
 
     app.route('/accounts/:id')
-    .all(app.config.passport.authenticate())
     .get(app.routes.accounts.getId)
     .put(app.routes.accounts.update)
     .delete(app.routes.accounts.remove)
